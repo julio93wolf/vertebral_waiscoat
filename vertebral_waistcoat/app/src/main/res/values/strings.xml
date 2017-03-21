@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">vertebral_waistcoat</string>
+    <string name="app_name">Vertebral Waistcoat</string>
+
+    <string name="login_lblServidor">IP del Servidor: </string>
+    <string name="login_lblPuerto">Puerto: </string>
+    <string name="login_btnLogin">Conectar</string>
 </resources>
