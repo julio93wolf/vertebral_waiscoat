@@ -12,6 +12,8 @@ public class login extends AppCompatActivity {
     EditText etxt_IP,etxt_Port;
     Button btn_Login;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

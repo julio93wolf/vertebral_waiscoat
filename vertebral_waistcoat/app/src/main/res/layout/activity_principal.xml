@@ -12,6 +12,11 @@
 
     <TextView
         android:text="Hello World!"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/lbl_Sensores"
+        android:textColor="#c32c2c"
+        android:textSize="@dimen/abc_action_button_min_width_overflow_material"
+        android:textStyle="bold"
+        android:textAlignment="center" />
 </RelativeLayout>
