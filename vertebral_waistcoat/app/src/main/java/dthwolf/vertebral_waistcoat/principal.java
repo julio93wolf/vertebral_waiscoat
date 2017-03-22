@@ -5,6 +5,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -27,6 +28,9 @@ public class principal extends AppCompatActivity implements SensorEventListener 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
         a_lblSensor = (TextView)findViewById(R.id.lbl_Sensores);
         a_SensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         a_SensorAcc = a_SensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -48,7 +52,7 @@ public class principal extends AppCompatActivity implements SensorEventListener 
         v_Y = event.values[1];
         v_Z = event.values[2];
         a_lblSensor.setText("\n\nX="+v_X+"\nY="+v_Y+"\nZ="+v_Z);
-        m_Output(v_X,v_Y,v_Y);
+        m_Output(v_X,v_Y,v_Z);
     }
 
     @Override
@@ -71,8 +75,12 @@ public class principal extends AppCompatActivity implements SensorEventListener 
     private void m_Conexion(){
         Toast ts_Mensaje;
         try{
+            System.out.println("IP: "+a_IP);
+            System.out.println("Puerto: "+a_Port);
             a_Conexion=new Socket(a_IP,a_Port);
+            System.out.println("Conexion Realizada");
             a_Output=new ObjectOutputStream(a_Conexion.getOutputStream());
+            System.out.println("Stream Realizado");
             if(a_Conexion.isConnected()){
                 ts_Mensaje=Toast.makeText(getApplicationContext(), "Servidor Conectado: "+a_IP, Toast.LENGTH_SHORT);
                 ts_Mensaje.show();
@@ -81,7 +89,9 @@ public class principal extends AppCompatActivity implements SensorEventListener 
                 ts_Mensaje.show();
             }
         }catch(Exception e){
-
+            System.out.println(e.toString());
+            ts_Mensaje=Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_SHORT);
+            ts_Mensaje.show();
         }
     }
 

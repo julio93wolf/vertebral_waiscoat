@@ -2,10 +2,8 @@ package dthwolf.vertebral_waistcoat;
 
 import java.io.Serializable;
 
-/**
- * Created by ValleRo on 21/03/2017.
- */
 public class datos implements Serializable {
+    private static final long serialVersionUID = 8799656478674716638L;
     private float a_X;
     private float a_Y;
     private float a_Z;
